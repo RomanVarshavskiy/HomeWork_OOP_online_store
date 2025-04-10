@@ -1,15 +1,18 @@
-# Проект "BankWidget"
+# Проект "OnlineStore"
 
 ## Описание:
 
-Проект "BankWidget" - приложение на Python. Это виджет банковских операций клиента, который показывает несколько последних успешных банковских операций.
+Проект "OnlineStore" - приложение на Python. E-commerce  — электронная торговля, или электронная коммерция. 
+На данном этапе работы не будет реализовываться система платежей, однако будет подготовлено всё для того, чтобы 
+появилось ядро для интернет-магазина. В дальнейшем для этого ядра возможно будет реализовать любой интерфейс — 
+от сайта до телеграм-бота.
 Данный проект находится на стадии разработки.
 
 ## Установка:
 
 1. Клонируйте репозиторий:
 ```
-git clone https://github.com/username/bankwidget.git
+git clone https://github.com/RomanVarshavskiy/HomeWork_OOP_online_store
 ```
 
 2. Установите зависимости:
@@ -29,7 +32,7 @@ python manage.py runserver
 ## Использование:
 
 1. Для запуска программы используйте функцию 'main' из модуля 'main'
-2. Для фильтрации списка транзакций, следуйте подсказкам на экране.
+2. 
 
 ## Тестирование
 
@@ -37,16 +40,9 @@ python manage.py runserver
 'pytest'
 
 Тесты покрывают следующие модули и функции:
-- 'masks': функции 'get_mask_card_number' и 'get_mask_account'.
-- 'widget': функции 'get_date' и 'mask_account_card'.
-- 'processing': функции 'filter_by_state' и 'sort_by_date'.
-- 'generators': функции card_number_generator, filter_by_currency, get_transactions_of_operations,
-                            search_transactions, transaction_descriptions.
-- 'decorators': функции 'log', 'decorator'.
-- 'utils': функции 'get_data_transactions'.
-- 'external_api': функции 'transaction_amount_in_rub'/
-- 'read_csv_xlsx.py': функции 'read_csv', 'read_excel'
-- 'main': функция 'main'
+- 'product',
+- 'category'.
+
 
 Покрытие тестами составляет 100% кода проекта.
 
