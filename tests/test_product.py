@@ -1,11 +1,14 @@
-from src.product import Product
 from unittest.mock import patch
+
+from src.product import Product
+
 
 def test_product_init(product):
     assert product.name == "orange"
     assert product.description == "from Egypt"
     assert product.price == 10.0
     assert product.quantity == 5
+
 
 def test_new_product_update_product():
     existing_product = Product("orange", "from Egypt", 10.0, 5)
@@ -46,6 +49,7 @@ def test_product_lower_price_no_agree(product):
     with patch("builtins.input", return_value="n"):
         product.price = 5.0
     assert product.price == 10.0
+
 
 def test_product_upper_price(product):
     product.price = 15.0

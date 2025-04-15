@@ -15,24 +15,23 @@ class Category:
         Category.category_count += 1
         Category.product_count += len(products) if products else 0
 
-
     def add_product(self, product: Product):
         """Добавление нового продукта в категорию."""
         self.__products.append(product)
         Category.product_count += 1
-
 
     @property
     def products(self):
         """Свойство для получения списка продуктов, по нужному шаблону."""
         products_str = ""
         for product in self.__products:
-            products_str += f'{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n'
+            products_str += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
         return products_str
 
     @property
     def products_list(self):
         return self.__products
+
 
 # if __name__ == "__main__":
 #     product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
