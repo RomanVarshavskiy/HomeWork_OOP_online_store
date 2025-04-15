@@ -23,7 +23,7 @@ def category_2():
         name="Fruits",
         description="Sweet fruits",
         products=[
-            Product("orange", "from Egypt", 6.5, 5),
+            Product("orange", "from Egypt", 10.0, 5),
             Product("melon", "from Turkey", 8.8, 6),
         ],
     )
@@ -31,4 +31,4 @@ def category_2():
 
 @pytest.fixture
 def product():
-    return Product("orange", "from Egypt", 6.5, 5)
+    return Product("orange", "from Egypt", 10.0, 5)
