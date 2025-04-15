@@ -1,14 +1,16 @@
 import json
 
 from config import PATH_TO_DATA
-from src.product import Product
 from src.category import Category
+from src.product import Product
+
 
 def read_json(filename: str) -> dict:
     """Функция для считывания данных из json"""
-    with open(PATH_TO_DATA / filename, 'r', encoding='UTF-8') as file:
+    with open(PATH_TO_DATA / filename, "r", encoding="UTF-8") as file:
         data = json.load(file)
     return data
+
 
 def create_objects_from_json(data: dict):
     """Создает объекты классов из данных json"""
@@ -21,6 +23,7 @@ def create_objects_from_json(data: dict):
         categories.append(Category(**category))
 
     return categories
+
 
 # if __name__ == '__main__':
 #     raw_data = read_json("products.json")
