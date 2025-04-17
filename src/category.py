@@ -13,7 +13,7 @@ class Category:
         Category.product_count += len(products) if products else 0
 
     def __str__(self):
-        return f"{self.name}, количество продуктов: {len(self.__products)} шт."
+        return f"{self.name}, количество продуктов: {Category.product_count} шт."
 
     def add_product(self, product: Product):
         """Добавление нового продукта в категорию."""
