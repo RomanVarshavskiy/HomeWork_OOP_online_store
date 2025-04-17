@@ -54,3 +54,11 @@ def test_product_lower_price_no_agree(product):
 def test_product_upper_price(product):
     product.price = 15.0
     assert product.price == 15.0
+
+
+def test_product_str(product):
+    assert str(product) == "orange, 10.0 руб. Остаток: 5 шт."
+
+
+def test_product_add(product, product2):
+    assert product + product2 == 66
