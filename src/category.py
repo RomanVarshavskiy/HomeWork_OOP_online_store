@@ -2,24 +2,18 @@ from src.product import Product
 
 
 class Category:
-    name: str
-    description: str
-    products: list
     category_count = 0
     product_count = 0
 
-    def __init__(self, name, description, products=None):
+    def __init__(self, name: str, description: str, products=None):
         self.name = name
         self.description = description
         self.__products = products if products else []
         Category.category_count += 1
         Category.product_count += len(products) if products else 0
 
-
     def __str__(self):
         return f"{self.name}, количество продуктов: {len(self.__products)} шт."
-        # return f"{self.name}, количество продуктов: {Category.product_count} шт."
-
 
     def add_product(self, product: Product):
         """Добавление нового продукта в категорию."""
@@ -37,6 +31,7 @@ class Category:
     @property
     def products_list(self):
         return self.__products
+
 
 # if __name__ == '__main__':
 #     product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)

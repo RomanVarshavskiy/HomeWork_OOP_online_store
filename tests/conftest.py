@@ -34,9 +34,11 @@ def category_2():
 def product():
     return Product("orange", "from Egypt", 10.0, 5)
 
+
 @pytest.fixture
 def product2():
     return Product("apple", "from Poland", 4.0, 4)
+
 
 @pytest.fixture
 def product_iterator(category_2):

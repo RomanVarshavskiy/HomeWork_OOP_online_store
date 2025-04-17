@@ -1,6 +1,3 @@
-from src.product import Product
-from src.category import Category
-
 class ProductIterator:
 
     def __init__(self, category_obj):
@@ -18,7 +15,6 @@ class ProductIterator:
             return product
         else:
             raise StopIteration
-
 
 # if __name__ == '__main__':
 #     product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)

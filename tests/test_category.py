@@ -1,5 +1,6 @@
 import pytest
 
+
 def test_category_init(category_1, category_2):
     assert category_1.name == "Vegetables"
     assert category_1.description == "Useful vegetables"
@@ -28,6 +29,7 @@ def test_category_add_products(category_1, product):
 
 def test_category_str(category_1):
     assert str(category_1) == "Vegetables, количество продуктов: 3 шт."
+
 
 def test_category_iterator(product_iterator):
     iter(product_iterator)
