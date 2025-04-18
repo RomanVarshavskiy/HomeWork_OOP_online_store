@@ -1,4 +1,4 @@
-# from src.product import Product
+import pytest
 
 
 def test_category_init(category_1, category_2):
@@ -25,3 +25,17 @@ def test_category_add_products(category_1, product):
     # category_1.add_product(Product("капуста", "пекинская", 3.0, 2))
     category_1.add_product(product)
     assert len(category_1.products_list) == 4
+
+
+def test_category_str(category_1):
+    assert str(category_1) == "Vegetables, количество продуктов: 12 шт."
+
+
+def test_category_iterator(product_iterator):
+    iter(product_iterator)
+    assert product_iterator.index == 0
+    assert next(product_iterator).name == "orange"
+    assert next(product_iterator).name == "melon"
+
+    with pytest.raises(StopIteration):
+        next(product_iterator)

@@ -10,14 +10,14 @@ def test_product_init(product):
     assert product.quantity == 5
 
 
-def test_new_product_update_product():
-    existing_product = Product("orange", "from Egypt", 10.0, 5)
-    products_list = [existing_product]
+def test_new_product_update_product(product, product2):
+    products_list = [product, product2]
     data = {"name": "orange", "description": "from Spain", "price": 15.0, "quantity": 3}
-    result = Product.new_product(data, products_list)
-    assert existing_product.name == "orange"
-    assert existing_product.price == 15.0
-    assert existing_product.quantity == 8
+    Product.new_product(data, products_list)
+    assert product.name == "orange"
+    assert product.price == 15.0
+    assert product.quantity == 8
+    assert len(products_list) == 2
 
 
 def test_new_product_create_new_product():
@@ -54,3 +54,11 @@ def test_product_lower_price_no_agree(product):
 def test_product_upper_price(product):
     product.price = 15.0
     assert product.price == 15.0
+
+
+def test_product_str(product):
+    assert str(product) == "orange, 10.0 руб. Остаток: 5 шт."
+
+
+def test_product_add(product, product2):
+    assert product + product2 == 66
