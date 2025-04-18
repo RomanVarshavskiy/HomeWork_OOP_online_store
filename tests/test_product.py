@@ -10,14 +10,14 @@ def test_product_init(product):
     assert product.quantity == 5
 
 
-def test_new_product_update_product():
-    existing_product = Product("orange", "from Egypt", 10.0, 5)
-    products_list = [existing_product]
+def test_new_product_update_product(product, product2):
+    products_list = [product, product2]
     data = {"name": "orange", "description": "from Spain", "price": 15.0, "quantity": 3}
-    result = Product.new_product(data, products_list)
-    assert existing_product.name == "orange"
-    assert existing_product.price == 15.0
-    assert existing_product.quantity == 8
+    Product.new_product(data, products_list)
+    assert product.name == "orange"
+    assert product.price == 15.0
+    assert product.quantity == 8
+    assert len(products_list) == 2
 
 
 def test_new_product_create_new_product():

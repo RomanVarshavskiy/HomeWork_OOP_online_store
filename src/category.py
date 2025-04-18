@@ -13,7 +13,10 @@ class Category:
         Category.product_count += len(products) if products else 0
 
     def __str__(self):
-        return f"{self.name}, количество продуктов: {Category.product_count} шт."
+        products_quantity = 0
+        for product in self.__products:
+            products_quantity += product.quantity
+        return f"{self.name}, количество продуктов: {products_quantity} шт."
 
     def add_product(self, product: Product):
         """Добавление нового продукта в категорию."""
@@ -33,11 +36,11 @@ class Category:
         return self.__products
 
 
+#
 # if __name__ == '__main__':
 #     product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
 #     product2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
 #     product3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
-#     # product4 = Product("Samsung Galaxy U23 Ultra", "256GB, Серый цвет, 200MP камера", 200000.0, 5)
 #
 #     print(str(product1))
 #     print(str(product2))
