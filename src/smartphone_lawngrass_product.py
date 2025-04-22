@@ -1,41 +1,56 @@
 from src.product import Product
 
 
-class Category:
-    category_count = 0
-    product_count = 0
+class Smartphone(Product):
 
-    def __init__(self, name: str, description: str, products=None):
-        self.name = name
-        self.description = description
-        self.__products = products if products else []
-        Category.category_count += 1
-        Category.product_count += len(products) if products else 0
+    def __init__(
+        self,
+        name: str,
+        description: str,
+        price: float,
+        quantity: int,
+        efficiency: float,
+        model: str,
+        memory: int,
+        color: str,
+    ):
+        super().__init__(name, description, price, quantity)
+        self.efficiency = efficiency
+        self.model = model
+        self.memory = memory
+        self.color = color
 
-    def __str__(self):
-        products_quantity = 0
-        for product in self.__products:
-            products_quantity += product.quantity
-        return f"{self.name}, количество продуктов: {products_quantity} шт."
+    def __add__(self, other):
+        if type(other) is Smartphone:
+            return self.quantity + other.quantity
+        raise TypeError(
+            f"Unsupported operand type(s) for +: 'Smartphone' and '{type(other)}'"
+        )
 
-    def add_product(self, product: Product):
-        """Добавление нового продукта в категорию."""
-        if isinstance(product, Product) or issubclass(product, Product):
-            self.__products.append(product)
-            Category.product_count += 1
 
-    @property
-    def products(self):
-        """Свойство для получения списка продуктов, по нужному шаблону."""
-        products_str = ""
-        for product in self.__products:
-            products_str += f"{str(product)}\n"
-        return products_str
+class LawnGrass(Product):
 
-    @property
-    def products_list(self):
-        """Геттер для получения списка продуктов."""
-        return self.__products
+    def __init__(
+        self,
+        name: str,
+        description: str,
+        price: float,
+        quantity: int,
+        country: str,
+        germination_period: str,
+        color: str,
+    ):
+        super().__init__(name, description, price, quantity)
+        self.country = country
+        self.germination_period = germination_period
+        self.color = color
+
+    def __add__(self, other):
+        if type(other) is LawnGrass:
+            return self.quantity + other.quantity
+        raise TypeError(
+            f"Unsupported operand type(s) for +: 'LawnGrass' and '{type(other)}'"
+        )
 
 
 #

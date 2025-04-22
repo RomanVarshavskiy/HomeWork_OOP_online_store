@@ -41,10 +41,12 @@ python manage.py runserver
 
 Тесты покрывают следующие модули и функции:
 - 'product',
-- 'category'.
+- 'category',
+- 'product_iterator',
+- 'smartphone_lawngrass_product'
 
 
-Покрытие тестами составляет 100% кода проекта.
+Покрытие тестами составляет 85% кода проекта.
 
 
 ## Документация:
