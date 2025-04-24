@@ -1,5 +1,3 @@
-from abc import ABC
-
 from src.base_product import BaseProduct
 from src.print_mixin import PrintMixin
 

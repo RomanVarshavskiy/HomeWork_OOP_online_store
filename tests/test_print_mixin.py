@@ -1,5 +1,6 @@
 from src.product import Product
-from src.smartphone_lawngrass_product import Smartphone, LawnGrass
+from src.smartphone_lawngrass_product import LawnGrass, Smartphone
+
 
 def test_print_mixin(capsys):
     Product("огурцы", "огурцы для салата", 5.5, 3)
@@ -17,7 +18,10 @@ def test_print_mixin(capsys):
         "Серый",
     )
     message = capsys.readouterr()
-    assert message.out.strip() == "Smartphone(Samsung Galaxy S23 Ultra, 256GB, Серый цвет, 200MP камера, 180000.0, 5)"
+    assert (
+        message.out.strip()
+        == "Smartphone(Samsung Galaxy S23 Ultra, 256GB, Серый цвет, 200MP камера, 180000.0, 5)"
+    )
 
     LawnGrass(
         "Газонная трава",
@@ -29,4 +33,7 @@ def test_print_mixin(capsys):
         "Зеленый",
     )
     message = capsys.readouterr()
-    assert message.out.strip() == "LawnGrass(Газонная трава, Элитная трава для газона, 500.0, 20)"
+    assert (
+        message.out.strip()
+        == "LawnGrass(Газонная трава, Элитная трава для газона, 500.0, 20)"
+    )
