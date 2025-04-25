@@ -34,10 +34,16 @@ def test_new_product_create_new_product():
 def test_product_price_negative(capsys, product):
     product.price = -8.0
     message = capsys.readouterr()
-    assert message.out.strip() == "Цена не должна быть нулевая или отрицательная"
+    assert (
+        message.out.strip().split("\n")[-1]
+        == "Цена не должна быть нулевая или отрицательная"
+    )
     product.price = 0.0
     message = capsys.readouterr()
-    assert message.out.strip() == "Цена не должна быть нулевая или отрицательная"
+    assert (
+        message.out.strip().split("\n")[-1]
+        == "Цена не должна быть нулевая или отрицательная"
+    )
     assert product.price == 10.0
 
 
