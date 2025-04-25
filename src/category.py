@@ -1,13 +1,13 @@
+from src.base_goods import BaseGoods
 from src.product import Product
 
 
-class Category:
+class Category(BaseGoods):
     category_count = 0
     product_count = 0
 
     def __init__(self, name: str, description: str, products=None):
-        self.name = name
-        self.description = description
+        super().__init__(name, description)
         self.__products = products if products else []
         Category.category_count += 1
         Category.product_count += len(products) if products else 0
@@ -82,3 +82,7 @@ class Category:
 #
 #     print(Category.category_count)
 #     print(Category.product_count)
+#
+#     # Создаем заказ
+#     order = Order("Заказ №1", "Покупка смартфона", product1, 3)
+#     print(order)
