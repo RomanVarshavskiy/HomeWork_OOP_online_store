@@ -39,3 +39,11 @@ def test_category_iterator(product_iterator):
 
     with pytest.raises(StopIteration):
         next(product_iterator)
+
+
+def test_middle_price_success(category_1, category_empty_product):
+    assert category_1.middle_price() == 6.3
+    assert category_empty_product.middle_price() == 0
+
+
+    # print(category_1.middle_price)
