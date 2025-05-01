@@ -33,6 +33,14 @@ def category_2():
 
 
 @pytest.fixture
+def category_empty_product():
+    return Category(
+        name="Fruits",
+        description="from Spain",
+    )
+
+
+@pytest.fixture
 def product():
     return Product("orange", "from Egypt", 10.0, 5)
 
