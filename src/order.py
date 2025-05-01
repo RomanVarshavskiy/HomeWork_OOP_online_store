@@ -1,5 +1,4 @@
 from src.base_goods import BaseGoods
-from src.exceptions import ZeroProductError
 from src.product import Product
 
 

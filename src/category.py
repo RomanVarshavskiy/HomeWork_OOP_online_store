@@ -21,10 +21,14 @@ class Category(BaseGoods):
 
     def add_product(self, product: Product):
         """Добавление нового продукта в категорию."""
-        if isinstance(product, Product) or (isinstance(product, type) and issubclass(product, Product)):
+        if isinstance(product, Product) or (
+            isinstance(product, type) and issubclass(product, Product)
+        ):
             try:
                 if product.quantity <= 0:
-                    raise ZeroProductError("Нельзя добавить товар с нулевым количеством")
+                    raise ZeroProductError(
+                        "Нельзя добавить товар с нулевым количеством"
+                    )
                 self.__products.append(product)
                 Category.product_count += 1
                 print("Продукт добавлен успешно")
@@ -32,7 +36,6 @@ class Category(BaseGoods):
                 print(str(e))
             finally:
                 print("Обработка добавления продукта завершена")
-
 
     @property
     def products(self):
@@ -50,11 +53,14 @@ class Category(BaseGoods):
     def middle_price(self):
         """Метод для получения средней цены продуктов в категории."""
         try:
-            return sum(product.price for product in self.__products) / len(self.__products)
+            return sum(product.price for product in self.__products) / len(
+                self.__products
+            )
         except ZeroDivisionError:
             return 0
 
-#
+
+
 # if __name__ == '__main__':
 #     try:
 #         product_invalid = Product("Бракованный товар", "Неверное количество", 1000.0, 0)

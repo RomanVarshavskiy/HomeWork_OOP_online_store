@@ -1,7 +1,6 @@
 import pytest
 
 from src.product import Product
-from src.exceptions import ZeroProductError
 
 
 def test_category_init(category_1, category_2):
@@ -35,8 +34,11 @@ def test_custom_category_exception(capsys, category_1):
     test_product_add = Product("капуста", "белокочанная", 2, 2)
     category_1.add_product(test_product_add)
     message = capsys.readouterr()
-    assert message.out.strip().split('\n')[-2] == "Продукт добавлен успешно"
-    assert message.out.strip().split('\n')[-1] == "Обработка добавления продукта завершена"
+    assert message.out.strip().split("\n")[-2] == "Продукт добавлен успешно"
+    assert (
+        message.out.strip().split("\n")[-1] == "Обработка добавления продукта завершена"
+    )
+
 
 def test_custom_category_exception_zero_quantity(capsys, category_1):
     # Создаем продукт с нулевым количеством, но не вызываем конструктор Product

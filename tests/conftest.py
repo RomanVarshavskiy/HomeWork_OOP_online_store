@@ -37,7 +37,7 @@ def category_empty_product():
     return Category(
         name="Fruits",
         description="from Spain",
-        )
+    )
 
 
 @pytest.fixture
