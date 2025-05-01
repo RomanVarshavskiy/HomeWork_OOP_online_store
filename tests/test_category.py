@@ -1,5 +1,8 @@
 import pytest
 
+from src.product import Product
+from src.exceptions import ZeroProductError
+
 
 def test_category_init(category_1, category_2):
     assert category_1.name == "Vegetables"
@@ -22,9 +25,31 @@ def test_category_products_property(category_1):
 
 def test_category_add_products(category_1, product):
     assert len(category_1.products_list) == 3
-    # category_1.add_product(Product("капуста", "пекинская", 3.0, 2))
     category_1.add_product(product)
     assert len(category_1.products_list) == 4
+
+
+def test_custom_category_exception(capsys, category_1):
+    assert len(category_1.products_list) == 3
+
+    test_product_add = Product("капуста", "белокочанная", 2, 2)
+    category_1.add_product(test_product_add)
+    message = capsys.readouterr()
+    assert message.out.strip().split('\n')[-2] == "Продукт добавлен успешно"
+    assert message.out.strip().split('\n')[-1] == "Обработка добавления продукта завершена"
+
+def test_custom_category_exception_zero_quantity(capsys, category_1):
+    # Создаем продукт с нулевым количеством, но не вызываем конструктор Product
+    product = object.__new__(Product)
+    product.name = "капуста"
+    product.description = "пекинская"
+    product._Product__price = 4
+    product.quantity = 0  # Устанавливаем quantity вручную
+
+    category_1.add_product(product)
+    captured = capsys.readouterr()
+    assert "Нельзя добавить товар с нулевым количеством" in captured.out
+    assert "Обработка добавления продукта завершена" in captured.out
 
 
 def test_category_str(category_1):
@@ -41,9 +66,6 @@ def test_category_iterator(product_iterator):
         next(product_iterator)
 
 
-def test_middle_price_success(category_1, category_empty_product):
+def test_middle_price(category_1, category_empty_product):
     assert category_1.middle_price() == 6.3
     assert category_empty_product.middle_price() == 0
-
-
-    # print(category_1.middle_price)

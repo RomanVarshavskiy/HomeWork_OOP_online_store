@@ -10,6 +10,8 @@ def test_product_init(product):
     assert product.description == "from Egypt"
     assert product.price == 10.0
     assert product.quantity == 5
+    with pytest.raises(ValueError):
+        Product("Бракованный товар", "Неверное количество", 1000.0, 0)
 
 
 def test_new_product_update_product(product, product2):

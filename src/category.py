@@ -1,5 +1,5 @@
 from src.base_goods import BaseGoods
-from src.exceptions import ZeroProductCategoryOrder
+from src.exceptions import ZeroProductError
 from src.product import Product
 
 
@@ -21,21 +21,17 @@ class Category(BaseGoods):
 
     def add_product(self, product: Product):
         """Добавление нового продукта в категорию."""
-        if isinstance(product, Product) or issubclass(product, Product):
+        if isinstance(product, Product) or (isinstance(product, type) and issubclass(product, Product)):
             try:
-                if product.quantity == 0:
-                    raise ZeroProductCategoryOrder("Товар с нулевым количеством не может быть добавлен")
-            except ZeroProductCategoryOrder as e:
-                print(str(e))
-            else:
+                if product.quantity <= 0:
+                    raise ZeroProductError("Нельзя добавить товар с нулевым количеством")
                 self.__products.append(product)
                 Category.product_count += 1
                 print("Продукт добавлен успешно")
+            except ZeroProductError as e:
+                print(str(e))
             finally:
                 print("Обработка добавления продукта завершена")
-        else:
-            raise TypeError("Передан неверный тип данных. Ожидался Product или его подкласс.")
-
 
 
     @property
@@ -58,23 +54,23 @@ class Category(BaseGoods):
         except ZeroDivisionError:
             return 0
 
-
-if __name__ == '__main__':
-    try:
-        product_invalid = Product("Бракованный товар", "Неверное количество", 1000.0, 0)
-    except ValueError as e:
-        print(
-            "Возникла ошибка ValueError прерывающая работу программы при попытке добавить продукт с нулевым количеством")
-    else:
-        print("Не возникла ошибка ValueError при попытке добавить продукт с нулевым количеством")
-
-    product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
-    product2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
-    product3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
-
-    category1 = Category("Смартфоны", "Категория смартфонов", [product1, product2, product3])
-
-    print(category1.middle_price())
-
-    category_empty = Category("Пустая категория", "Категория без продуктов", [])
-    print(category_empty.middle_price())
+#
+# if __name__ == '__main__':
+#     try:
+#         product_invalid = Product("Бракованный товар", "Неверное количество", 1000.0, 0)
+#     except ValueError as e:
+#         print(
+#             "Возникла ошибка ValueError прерывающая работу программы при попытке добавить продукт с нулевым количеством")
+#     else:
+#         print("Не возникла ошибка ValueError при попытке добавить продукт с нулевым количеством")
+#
+#     product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
+#     product2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
+#     product3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
+#
+#     category1 = Category("Смартфоны", "Категория смартфонов", [product1, product2, product3])
+#
+#     print(category1.middle_price())
+#
+#     category_empty = Category("Пустая категория", "Категория без продуктов", [])
+#     print(category_empty.middle_price())
